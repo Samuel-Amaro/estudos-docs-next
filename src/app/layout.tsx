@@ -18,6 +18,8 @@ export const metadata = {
  * 
  * O layout raiz é definido no nível superior do app diretório e se aplica a todas as rotas. Esse layout permite modificar o HTML inicial retornado do servidor.
  * 
+ * crie uma interface do usuário compartilhada para um segmento e seus filhos. Um layout envolve uma página ou um segmento filho.
+ * 
  * @param param0 
  * @returns 
  */

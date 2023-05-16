@@ -5,7 +5,7 @@
  *
  * app/dashboard/page.tsx é a IU para o URL `/dashboard`
  *
- * Uma página é uma interface do usuário exclusiva para uma rota.
+ * Uma página é uma interface do usuário exclusiva para uma rota. e torna o caminho publicamente acessivel /dashboard rota
  *
  * uma página e um componente de servidor por padrão
  *
