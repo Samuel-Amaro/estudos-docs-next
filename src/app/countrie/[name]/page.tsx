@@ -1,5 +1,6 @@
 import { Countrie } from "@/app/data";
 import Image from "next/image";
+import style from "../countrie.module.css";
 
 /**
  * * BUSCA DE DADOS
@@ -47,11 +48,25 @@ export default async function Page({ params }: { params: { name: string } }) {
         {countrie?.flags === undefined ? (
           "Not imagen ilustration country"
         ) : (
+          /**
+           * * COMPONENTE <Img />
+           *
+           *  O Image Component otimiza o desempenho das imagens por meio de carregamento lento e redimensionamento automático das imagens com base no tamanho do dispositivo.
+           *
+           * * Imagens locais
+           *
+           * podemos definir o src para imagem local(usar imagem local com import arquivos .jpg, .png. ou .webp) o next.js determinada o width e height da minha imagem com base no arquivo importado, o import tem que ser estatico
+           *
+           * * Imagens remotas
+           *
+           * para usar imagem remota o scr deve ser uma string de URL. o proprio usuario deve definir manualmente as props width e height, esses atributos não determinar o tamanho renderizado do arquivo de imagem
+           */
           <Image
             src={countrie.flags.svg}
             alt={`Ilustration flag from ${countrie.name.common}`}
-            width={300}
-            height={300}
+            width={500}
+            height={500}
+            className={style.flag}
           />
         )}
       </aside>

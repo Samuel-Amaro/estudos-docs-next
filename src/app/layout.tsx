@@ -1,11 +1,29 @@
-//Esses estilos se aplicam a todas as rotas no aplicativo
+//Esses estilos se aplicam a todas as rotas no aplicativo, css global de forma tradional
 import "./globals.css";
+/**
+ * * OTIMIZAÇÃO DE FONTE
+ *
+ *  next/font otimizará automaticamente suas fontes (incluindo fontes personalizadas) e removerá solicitações de rede externa para melhorar a privacidade e o desempenho.
+ *
+ * * FONTS DO GOOGLE
+ *
+ * Hospede automaticamente qualquer fonte do Google.
+ *
+ * importando a fonte que gostaria de usar como uma function
+ */
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+//Se carregar uma fonte variável, você não precisa especificar o peso da fonte
+const inter = Inter({
+  subsets: ["latin"], //google fonts são subsets automaticamente isso reduz o tamnho do arquivo de fonte e melhora o desempenho
+  display: "swap",
+  style: ["normal"], //podemos especificar varios weights e style usando uma array
+  weight: ["400", "700"], //se não puder usar uma fonte variável precisa especificar um peso,
+  variable: "--font-inter", //cria uma variavel CSS para poder usar com minha solução preferida
+});
 
 /**
- * Os metadados podem ser definidos exportando um metadataobjeto ou generateMetadata função em um arquivo layout.js ou page.js.
+ * Os metadados podem ser definidos exportando um metadata objeto ou generateMetadata função em um arquivo layout.js ou page.js.
  */
 export const metadata = {
   title: "Create Next App",
@@ -31,7 +49,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      {/** aplicar a className onde for necessaria, isso garante que a fonte seja pré-carregada somente quando for renderizada */}
+      <body className={`${inter.variable}` /*inter.className*/}>
+        {children}
+      </body>
     </html>
   );
 }
