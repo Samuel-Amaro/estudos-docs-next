@@ -1,6 +1,7 @@
 import { Countrie } from "@/app/data";
 import Image from "next/image";
 import style from "../countrie.module.css";
+import { Metadata, ResolvingMetadata } from "next";
 
 /**
  * * BUSCA DE DADOS
@@ -26,6 +27,37 @@ async function getCountrie(name: string) {
   const result = (await res.json()) as Countrie[];
 
   return result[0];
+}
+
+type Props = {
+  params: { name: string };
+};
+
+/**
+ * * METADADOS
+ *
+ * Os metadados ajudam os mecanismos de pesquisa a entender melhor seu conteúdo (o que pode resultar em melhor SEO) e permitem que você personalize como seu conteúdo é apresentado nas mídias sociais, ajudando a criar uma experiência de usuário mais envolvente e consistente em várias plataformas.Os metadados ajudam os mecanismos de pesquisa a entender melhor seu conteúdo (o que pode resultar em melhor SEO) e permitem que você personalize como seu conteúdo é apresentado nas mídias sociais, ajudando a criar uma experiência de usuário mais envolvente e consistente em várias plataformas.
+ *
+ * Os metadados podem ser definidos exportando um metadata objeto ou generateMetadata função em um arquivo layout.js ou page.js.
+ *
+ * aqui vamos definir metadados dinamicos, exporta uma metadada function de page.js dinamica
+ * 
+ * Os metadados estáticos e dinâmicos generateMetadata são suportados apenas nos componentes do servidor .
+ */
+export async function generateMetadata(
+  { params }: Props,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  //busca dados
+  const countrie = await getCountrie(params.name);
+
+  return {
+    title: countrie.name.common,
+    description: `Coutrie ${countrie.name.common}`,
+    openGraph: {
+      images: [countrie.flags.svg]
+    }
+  };
 }
 
 /**
