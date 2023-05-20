@@ -41,7 +41,7 @@ type Props = {
  * Os metadados podem ser definidos exportando um metadata objeto ou generateMetadata função em um arquivo layout.js ou page.js.
  *
  * aqui vamos definir metadados dinamicos, exporta uma metadada function de page.js dinamica
- * 
+ *
  * Os metadados estáticos e dinâmicos generateMetadata são suportados apenas nos componentes do servidor .
  */
 export async function generateMetadata(
@@ -50,13 +50,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   //busca dados
   const countrie = await getCountrie(params.name);
-
   return {
     title: countrie.name.common,
     description: `Coutrie ${countrie.name.common}`,
     openGraph: {
-      images: [countrie.flags.svg]
-    }
+      images: [countrie.flags.svg],
+    },
   };
 }
 

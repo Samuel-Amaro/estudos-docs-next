@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Countrie } from "./data";
 import styles from "./page.module.css"; //inclui CSS em nivel de componente
+import CountrieList from "@/components/CountrieList";
 
 /**
  * * BUSCA DE DADOS
@@ -26,20 +27,6 @@ async function getCountries() {
   }
 
   return res.json() as Promise<Countrie[]>;
-}
-
-function CountrieList({ countries }: { countries: Countrie[] }) {
-  return (
-    <ol>
-      {countries.map((countrie, index) => (
-        <li key={index} className={styles.item}>
-          <Link href={`/countrie/${countrie.name.common}`}>
-            {countrie.name.common}
-          </Link>
-        </li>
-      ))}
-    </ol>
-  );
 }
 
 /**
