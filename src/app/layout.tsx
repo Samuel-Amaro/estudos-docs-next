@@ -48,7 +48,9 @@ export const metadata = {
  * O layout raiz é definido no nível superior do app diretório e se aplica a todas as rotas. Esse layout permite modificar o HTML inicial retornado do servidor.
  *
  * crie uma interface do usuário compartilhada para um segmento e seus filhos. Um layout envolve uma página ou um segmento filho.
- *
+ * 
+ * Um layout raiz é o layout superior no app diretório raiz. Ele é usado para definir as tags <html> e <body> e outras interfaces de usuário compartilhadas globalmente.
+ * 
  * @param param0
  * @returns
  */

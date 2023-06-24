@@ -5,12 +5,14 @@ import { useEffect } from "react";
 /**
  * * MANIPULAÇÃO DE ERROS (7)
  *
- * A error.jsconvenção de arquivo permite que você manipule corretamente erros de tempo de execução em rotas aninhadas .
+ * A error.js convenção de arquivo permite que você manipule corretamente erros de tempo de execução em rotas aninhadas .
  *
  * cria interface do usuário de erro para um segmento e seus filhos. error.js envolve uma página ou segmento filho em um React Error Boundary, mostrando a IU de erro se um erro for detectado.
  *
  * aqui temos uma UI de erro para o segmento de rota /, qualuqer erro nesse segmento e mostrada essa UI
- *
+ * 
+ * Um arquivo de erro define um limite de interface do usuário de erro para um segmento de rota.
+ * 
  * @param param0
  * @returns
  */
@@ -19,8 +21,8 @@ export default function Error({
   error,
   reset,
 }: {
-  error: Error;
-  reset: () => void;
+  error: Error; //Uma instância de um Error objeto. Este erro pode acontecer no servidor ou no cliente.
+  reset: () => void; //Uma função para redefinir o limite de erro, que não retorna uma resposta.
 }) {
   useEffect(() => {
     //Registre o erro em um serviço de relatório de erros

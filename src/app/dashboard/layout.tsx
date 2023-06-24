@@ -13,7 +13,7 @@ import styles from "./styles.module.css"; //inclui CSS em nivel de componente
  * crie uma interface do usuário compartilhada para um segmento e seus filhos. Um layout envolve uma página ou um segmento filho.
  */
 export default function DashboardLayout({
-  children, // será uma página ou layout aninhado
+  children, // será uma página ou layout aninhado, Os componentes de layout devem aceitar e usar um children prop. Durante a renderização, children será preenchido com os segmentos de rota que o layout está agrupando. Estes serão principalmente o componente de um Layout filho (se existir) ou Page , mas também podem ser outros arquivos especiais, como Loading ou Error , quando aplicável.
 }: {
   children: React.ReactNode;
 }) {

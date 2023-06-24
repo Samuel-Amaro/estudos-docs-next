@@ -62,6 +62,8 @@ export async function generateMetadata(
 /**
  * * Rotas Dinamicas (5) - GERANDO ROTAS DINAMICAMENTE SOB DEMANDA NO MOMENTO DA REQUEST
  *
+ * Uma página é uma interface do usuário exclusiva para uma rota.
+ * 
  * criando rotas a partir de dados dinamicos, usando segmentos dinamicos, que são preenchidos no mommento da request, aqui construi rotas dinamicas sob demanda no momento da request
  *
  * Segmentos dinâmicos são passados ​​como params prop para as funções layout, page, route e generateMetadata.
@@ -70,6 +72,7 @@ export async function generateMetadata(
  *
  * [name] e onde está o segmento dinâmico, ou dados dinamicos
  *
+ * params: Um objeto que contém os parâmetros de rota dinâmica do segmento raiz até aquela página.
  */
 export default async function Page({ params }: { params: { name: string } }) {
   const countrie = await getCountrie(params.name);

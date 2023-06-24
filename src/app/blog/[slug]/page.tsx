@@ -38,6 +38,8 @@ export async function generateStaticParams() {
  * - /blog/a
  * - /blog/b
  * - /blog/c
+ * 
+ * params: Um objeto que contém os parâmetros de rota dinâmica do segmento raiz até aquela página.
 */
 export default function Page({ params }: { params: { slug: string } }) {
   return <div>My Post Page</div>;
